@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+
+<h2>Students List</h2>
+
+<a href="/students/add/" class="btn btn-primary">
+Add Student
+</a>
+
+</div>
+
+<form method="GET" class="mb-3">
+
+<div class="input-group">
+
+<input type="text" name="q" class="form-control" placeholder="Search by name or course">
+
+<button class="btn btn-secondary">Search</button>
+
+</div>
+
+</form>
+
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-dark">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Course</th>
+<th>Admission Date</th>
+<th>Actions</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for student in students %}
+
+<tr>
+
+<td>{{ student.id }}</td>
+
+<td>{{ student.full_name }}</td>
+
+<td>{{ student.email }}</td>
+
+<td>{{ student.phone }}</td>
+
+<td>{{ student.course }}</td>
+
+<td>{{ student.date_of_admission }}</td>
+
+<td>
+
+<a href="/students/edit/{{student.id}}/" class="btn btn-warning btn-sm">
+Edit
+</a>
+
+<a href="/students/delete/{{student.id}}/" class="btn btn-danger btn-sm">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}
